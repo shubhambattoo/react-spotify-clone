@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Login from './Login';
 import { getTokenFromResponse } from './spotify';
@@ -16,10 +16,14 @@ function App() {
     window.location.hash = '';
     const _token = hash.access_token;
     if (_token) {
-      dispatch({type: 'SET_TOKEN', payload: _token})
+      dispatch({ type: 'SET_TOKEN', payload: _token });
       spotify.setAccessToken(_token);
       spotify.getMe().then((account) => {
         dispatch({ type: 'SET_USER', payload: account });
+      });
+
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({ type: 'SET_PLAYLIST', payload: playlists });
       });
     }
   }, [dispatch]);
@@ -28,7 +32,7 @@ function App() {
     <div>
       {token ? (
         <>
-          <Player />
+          <Player spotify={spotify} />
         </>
       ) : (
         <Login />
