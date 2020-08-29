@@ -4,14 +4,16 @@ import Sidebar from './Sidebar';
 import Body from './Body';
 import Footer from './Footer';
 
-const Player = ({ player }) => {
-  return <div className="player">
-    <div className="player__body">
-      <Sidebar />
-      <Body />
+const Player = ({ spotify }) => {
+  return (
+    <div className="player">
+      <div className="player__body">
+        <Sidebar />
+        <Body spotify={spotify} />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>;
+  );
 };
 
 export default Player;
