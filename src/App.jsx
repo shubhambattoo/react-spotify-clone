@@ -25,6 +25,10 @@ function App() {
       spotify.getUserPlaylists().then((playlists) => {
         dispatch({ type: 'SET_PLAYLIST', payload: playlists });
       });
+
+      spotify.getPlaylist('37i9dQZF1E38JVXkR9gnee').then((playlist) => {
+        dispatch({ type: 'SET_CURRENT_PLAYLIST', payload: playlist });
+      });
     }
   }, [dispatch]);
 

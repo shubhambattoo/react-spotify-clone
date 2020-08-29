@@ -5,8 +5,6 @@
   color: #fff;
   padding: 10px;
   background-color: #040404;
-  overflow-y: auto;
-  /* padding-bottom: 65px; */
 }
 
 .sidebar__logo {
@@ -25,4 +23,9 @@
   margin-left: 10px;
   padding: 5px;
   font-size: 13px;
+}
+
+.sidebar__list {
+  overflow-y: auto;
+  height: 250px;
 }
